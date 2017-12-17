@@ -3,28 +3,33 @@ enum GameEvent {
     case didStateChange(state: GameState)
 }
 
-protocol GameEventObserver {
-    func didChange(board: Board)
-    func didChange(gameState: GameState)
+protocol GameEventReceiver: class {
+    func onReceive(event: GameEvent)
 }
 
 protocol GameEventCenter {
-    func register(observer: GameEventObserver)
-    func unregister(observer: GameEventObserver)
-    
+    func register(receiver: GameEventReceiver)
+    func unregister(receiver: GameEventReceiver)
     func send(event: GameEvent)
 }
 
 class GameEventCenterImpl: GameEventCenter {
-    func register(observer: GameEventObserver) {
-        
+    
+    private var receivers = [GameEventReceiver]()
+    
+    func register(receiver: GameEventReceiver) {
+        receivers.append(receiver)
     }
     
-    func unregister(observer: GameEventObserver) {
-        
+    func unregister(receiver: GameEventReceiver) {
+        if let index = receivers.index(where: { receiver === $0 }) {
+            receivers.remove(at: index)
+        }
     }
     
     func send(event: GameEvent) {
-        
+        receivers.forEach {
+            $0.onReceive(event: event)
+        }
     }
 }
