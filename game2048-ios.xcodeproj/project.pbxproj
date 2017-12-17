@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AB1AEB081FE67D5A002753E9 /* GameEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1AEB071FE67D5A002753E9 /* GameEvent.swift */; };
+		AB1AEB0B1FE6A979002753E9 /* BoardEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1AEB0A1FE6A979002753E9 /* BoardEvent.swift */; };
+		AB1AEB0D1FE6B0C2002753E9 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1AEB0C1FE6B0C2002753E9 /* Event.swift */; };
 		AB6B8A121FDE96E0006A52C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6B8A111FDE96E0006A52C2 /* AppDelegate.swift */; };
 		AB6B8A141FDE96E0006A52C2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6B8A131FDE96E0006A52C2 /* ViewController.swift */; };
 		AB6B8A171FDE96E0006A52C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB6B8A151FDE96E0006A52C2 /* Main.storyboard */; };
@@ -39,6 +41,8 @@
 
 /* Begin PBXFileReference section */
 		AB1AEB071FE67D5A002753E9 /* GameEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEvent.swift; sourceTree = "<group>"; };
+		AB1AEB0A1FE6A979002753E9 /* BoardEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardEvent.swift; sourceTree = "<group>"; };
+		AB1AEB0C1FE6B0C2002753E9 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		AB6B8A0E1FDE96E0006A52C2 /* game2048-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "game2048-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB6B8A111FDE96E0006A52C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB6B8A131FDE96E0006A52C2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -105,7 +109,9 @@
 		AB6B8A101FDE96E0006A52C2 /* game2048-ios */ = {
 			isa = PBXGroup;
 			children = (
+				AB1AEB0C1FE6B0C2002753E9 /* Event.swift */,
 				AB6B8A3F1FDE9701006A52C2 /* Board.swift */,
+				AB1AEB0A1FE6A979002753E9 /* BoardEvent.swift */,
 				AB6B8A4B1FE1BA82006A52C2 /* BoardLogic.swift */,
 				AB6B8A431FDEA0CD006A52C2 /* Direction.swift */,
 				AB6B8A411FDEA013006A52C2 /* GameLogic.swift */,
@@ -275,9 +281,11 @@
 				AB6B8A141FDE96E0006A52C2 /* ViewController.swift in Sources */,
 				AB6B8A121FDE96E0006A52C2 /* AppDelegate.swift in Sources */,
 				AB6B8A401FDE9701006A52C2 /* Board.swift in Sources */,
+				AB1AEB0D1FE6B0C2002753E9 /* Event.swift in Sources */,
 				AB6B8A4C1FE1BA82006A52C2 /* BoardLogic.swift in Sources */,
 				AB6B8A441FDEA0CD006A52C2 /* Direction.swift in Sources */,
 				AB1AEB081FE67D5A002753E9 /* GameEvent.swift in Sources */,
+				AB1AEB0B1FE6A979002753E9 /* BoardEvent.swift in Sources */,
 				AB6B8A421FDEA013006A52C2 /* GameLogic.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

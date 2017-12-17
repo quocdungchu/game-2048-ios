@@ -25,8 +25,8 @@ class BoardLogicImpl {
 
 extension BoardLogicImpl: BoardLogic {
     func fillRandomTile(board: Board) {
-        if let index = board.randomEmptyIndex {
-            board[index] = .filled(point: 2)
+        if let position = board.randomEmptyPosition {
+            board[position] = .filled(point: 2)
         }
     }
     

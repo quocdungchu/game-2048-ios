@@ -2,8 +2,29 @@ import Foundation
 
 class Board {
     enum Constants {
-        static let width = 4
-        static let height = 4
+        static let numberOfRangs = 4
+        static let numberOfColonnes = 4
+    }
+    
+    struct Position {
+        let rang: Int
+        let colonne: Int
+        
+        var index: Int {
+            return rang * Constants.numberOfRangs + colonne
+        }
+        
+        init(_ rang: Int, _ colonne: Int) {
+            self.rang = rang
+            self.colonne = colonne
+        }
+        
+        init(index: Int) {
+            self.init(
+                index / Constants.numberOfRangs,
+                index % Constants.numberOfRangs
+            )
+        }
     }
     
     enum Tile {
@@ -12,7 +33,7 @@ class Board {
     }
     
     static var defaultTiles: [Tile] {
-        return [Tile](repeatElement(.empty, count: Constants.width * Constants.height))
+        return [Tile](repeatElement(.empty, count: Int(Constants.numberOfRangs * Constants.numberOfColonnes)))
     }
     
     private var tiles = Board.defaultTiles
@@ -21,16 +42,16 @@ class Board {
         return tiles.first(where: { $0 == .empty }) == nil
     }
     
-    var emptyTileIndexes: [Int] {
+    var emptyPositions: [Position] {
         return tiles.enumerated()
             .filter { _, tile in tile == .empty }
-            .map { index, _ in index }
+            .map { index, _ in Position(index: index) }
     }
     
-    var randomEmptyIndex: Int? {
-        let emptyTileIndexes = self.emptyTileIndexes
-        let randomIndex = Int(arc4random()) % emptyTileIndexes.count
-        return emptyTileIndexes[randomIndex]
+    var randomEmptyPosition: Position? {
+        let positions = self.emptyPositions
+        let randomIndex = Int(arc4random()) % positions.count
+        return positions[randomIndex]
     }
     
     var points: Int {
@@ -45,13 +66,13 @@ class Board {
         }
     }
     
-    subscript(index: Int) -> Tile {
+    subscript(position: Position) -> Tile {
         get {
-            return tiles[index]
+            return tiles[position.index]
         }
         
         set(newValue) {
-            tiles[index] = newValue
+            tiles[position.index] = newValue
         }
     }
     
@@ -59,6 +80,7 @@ class Board {
         tiles = Board.defaultTiles
     }
 }
+
 
 func == (lhs: Board.Tile, rhs: Board.Tile) -> Bool {
     switch (lhs, rhs) {
