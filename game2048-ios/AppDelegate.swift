@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  game2048-ios
-//
-//  Created by Quoc Dung Chu on 12/11/17.
-//  Copyright © 2017 quoc. All rights reserved.
-//
-
 import UIKit
 
 @UIApplicationMain
