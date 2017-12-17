@@ -13,8 +13,6 @@
 		AB6B8A171FDE96E0006A52C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB6B8A151FDE96E0006A52C2 /* Main.storyboard */; };
 		AB6B8A191FDE96E0006A52C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB6B8A181FDE96E0006A52C2 /* Assets.xcassets */; };
 		AB6B8A1C1FDE96E0006A52C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB6B8A1A1FDE96E0006A52C2 /* LaunchScreen.storyboard */; };
-		AB6B8A271FDE96E1006A52C2 /* game2048_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6B8A261FDE96E1006A52C2 /* game2048_iosTests.swift */; };
-		AB6B8A321FDE96E1006A52C2 /* game2048_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6B8A311FDE96E1006A52C2 /* game2048_iosUITests.swift */; };
 		AB6B8A401FDE9701006A52C2 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6B8A3F1FDE9701006A52C2 /* Board.swift */; };
 		AB6B8A421FDEA013006A52C2 /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6B8A411FDEA013006A52C2 /* GameLogic.swift */; };
 		AB6B8A441FDEA0CD006A52C2 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6B8A431FDEA0CD006A52C2 /* Direction.swift */; };
@@ -49,10 +47,8 @@
 		AB6B8A1B1FDE96E0006A52C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AB6B8A1D1FDE96E0006A52C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB6B8A221FDE96E0006A52C2 /* game2048-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "game2048-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AB6B8A261FDE96E1006A52C2 /* game2048_iosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = game2048_iosTests.swift; sourceTree = "<group>"; };
 		AB6B8A281FDE96E1006A52C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB6B8A2D1FDE96E1006A52C2 /* game2048-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "game2048-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AB6B8A311FDE96E1006A52C2 /* game2048_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = game2048_iosUITests.swift; sourceTree = "<group>"; };
 		AB6B8A331FDE96E1006A52C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB6B8A3F1FDE9701006A52C2 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		AB6B8A411FDEA013006A52C2 /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
@@ -128,7 +124,6 @@
 		AB6B8A251FDE96E1006A52C2 /* game2048-iosTests */ = {
 			isa = PBXGroup;
 			children = (
-				AB6B8A261FDE96E1006A52C2 /* game2048_iosTests.swift */,
 				AB6B8A281FDE96E1006A52C2 /* Info.plist */,
 			);
 			path = "game2048-iosTests";
@@ -137,7 +132,6 @@
 		AB6B8A301FDE96E1006A52C2 /* game2048-iosUITests */ = {
 			isa = PBXGroup;
 			children = (
-				AB6B8A311FDE96E1006A52C2 /* game2048_iosUITests.swift */,
 				AB6B8A331FDE96E1006A52C2 /* Info.plist */,
 			);
 			path = "game2048-iosUITests";
@@ -153,6 +147,7 @@
 				AB6B8A0A1FDE96E0006A52C2 /* Sources */,
 				AB6B8A0B1FDE96E0006A52C2 /* Frameworks */,
 				AB6B8A0C1FDE96E0006A52C2 /* Resources */,
+				AB1AEB091FE67FF5002753E9 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -272,6 +267,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		AB1AEB091FE67FF5002753E9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AB6B8A0A1FDE96E0006A52C2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -292,7 +303,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB6B8A271FDE96E1006A52C2 /* game2048_iosTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,7 +310,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB6B8A321FDE96E1006A52C2 /* game2048_iosUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,7 +463,7 @@
 				DEVELOPMENT_TEAM = 2U9LJ49V7G;
 				INFOPLIST_FILE = "game2048-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.quoc.game2048-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = com.quoc.g2048;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -469,7 +478,7 @@
 				DEVELOPMENT_TEAM = 2U9LJ49V7G;
 				INFOPLIST_FILE = "game2048-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.quoc.game2048-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = com.quoc.g2048;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
