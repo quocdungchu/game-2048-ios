@@ -1,3 +1,5 @@
+import Foundation
+
 class Board {
     enum Constants {
         static let width = 4
@@ -13,7 +15,7 @@ class Board {
         return [Tile](repeatElement(.empty, count: Constants.width * Constants.height))
     }
     
-    var tiles = Board.defaultTiles
+    private var tiles = Board.defaultTiles
     
     var isFilled: Bool {
         return tiles.first(where: { $0 == .empty }) == nil
@@ -25,6 +27,12 @@ class Board {
             .map { index, _ in index }
     }
     
+    var randomEmptyIndex: Int? {
+        let emptyTileIndexes = self.emptyTileIndexes
+        let randomIndex = Int(arc4random()) % emptyTileIndexes.count
+        return emptyTileIndexes[randomIndex]
+    }
+    
     var points: Int {
         return tiles.reduce(0) { cumulated, tile in
             switch tile {
@@ -34,6 +42,16 @@ class Board {
             case .filled(let point):
                 return cumulated + point
             }
+        }
+    }
+    
+    subscript(index: Int) -> Tile {
+        get {
+            return tiles[index]
+        }
+        
+        set(newValue) {
+            tiles[index] = newValue
         }
     }
     

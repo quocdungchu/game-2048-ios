@@ -20,15 +20,14 @@ class BoardLogicImpl {
     
     private func moveTilesToDown(board: Board) {
 
-    }
+    }    
 }
 
 extension BoardLogicImpl: BoardLogic {
     func fillRandomTile(board: Board) {
-        let emptyTileIndexes = board.emptyTileIndexes
-        let randomIndex = Int(arc4random()) % emptyTileIndexes.count
-        let tileIndex = emptyTileIndexes[randomIndex]
-        board.tiles[tileIndex] = .filled(point: 2)
+        if let index = board.randomEmptyIndex {
+            board[index] = .filled(point: 2)
+        }
     }
     
     func moveTiles(to direction: Direction, board: Board) {
