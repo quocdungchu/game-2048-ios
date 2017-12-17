@@ -1,4 +1,9 @@
+import RxSwift
 import Foundation
+
+enum BoardEvent {
+    
+}
 
 protocol BoardLogic {
     func fillRandomTile(board: Board)
@@ -6,6 +11,13 @@ protocol BoardLogic {
 }
 
 class BoardLogicImpl {
+    
+    private let didEventSend: PublishSubject<BoardEvent>
+    
+    init(didEventSend: PublishSubject<BoardEvent>) {
+        self.didEventSend = didEventSend
+    }
+    
     private func moveTilesToLeft(board: Board) {
         
     }

@@ -1,0 +1,6 @@
+framework module Pods_game2048_iosUITests {
+  umbrella header "Pods-game2048-iosUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
