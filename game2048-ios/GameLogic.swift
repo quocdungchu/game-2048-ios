@@ -9,18 +9,15 @@ class GameLogicImpl {
     private let gameState: GameState
     private let board: Board
     private let boardLogic: BoardLogic
-    private let eventCenter: EventCenter
     
     init(
         gameState: GameState,
         board: Board,
-        boardLogic: BoardLogic,
-        eventCenter: EventCenter)
+        boardLogic: BoardLogic)
     {
         self.gameState = gameState
         self.board = board
         self.boardLogic = boardLogic
-        self.eventCenter = eventCenter
     }
 }
 
