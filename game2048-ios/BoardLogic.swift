@@ -1,73 +1,101 @@
-import RxSwift
 import Foundation
 
-enum BoardEvent {
-    case didTilesReset(board: Board)
-    case didTileGenerate(board: Board, point: Int)
-    case didTileMove(board: Board, from: Board.Position, to: Board.Position)
-    case didTileTransform(board: Board, from: Board.Position, to: Board.Position, newPoint: Int)
+enum MovingRecord {
+    case transition(from: Board.Position, to: Board.Position)
+    case transform(at: Board.Position, newPoint: Int)
+}
+
+struct MovingResult {
+    let board:  Board
+    let records: [MovingRecord]
 }
 
 protocol BoardLogic {
-    var didEventSend: PublishSubject<BoardEvent> { get }
-    func fillRandomTile()
-    func moveTiles(to direction: Direction)
-    func reset()
+    func fillRandomTile(board: Board) -> Board
+    func moveTiles(to direction: Direction, board: Board) -> MovingResult
 }
 
 class BoardLogicImpl {
     
-    let didEventSend = PublishSubject<BoardEvent>()
-    private let board: Board
-    
-    init(board: Board) {
-        self.board = board
+    private struct MovingTilesResult {
+        let tiles: [Board.Tile]
+        let records: [MovingRecord]
     }
     
-    private func moveTilesToLeft() {
+    // TODO
+    private func moveToFront(tiles: [Board.Tile]) -> MovingTilesResult {
+        guard !tiles.isEmpty else {
+            return MovingTilesResult(tiles: [], records: [])
+        }
         
-    }
-    
-    private func moveTilesToRight() {
+        for tile in tiles {
+            
+        }
         
+        return MovingTilesResult(tiles: [], records: [])
     }
     
-    private func moveTilesToUp() {
-
+    // TODO
+    private func moveToFront(index: Int, tiles: [Board.Tile]) -> MovingTilesResult {
+        guard tiles.count > index, case .filled(let targetPoint) = tiles[index] else {
+            return MovingTilesResult(tiles: [], records: [])
+        }
+        
+        for i in (0..<index).reversed() {
+            if case .filled(let point) = tiles[i] {
+                if targetPoint == point {
+                    
+                } else {
+                    
+                }
+                break
+            }
+        }
+        
+        return MovingTilesResult(tiles: [], records: [])
     }
     
-    private func moveTilesToDown() {
-
-    }    
+    private func moveTilesToLeft(board: Board) -> MovingResult {
+        return MovingResult(board: board, records: [])
+    }
+    
+    private func moveTilesToRight(board: Board) -> MovingResult {
+        return MovingResult(board: board, records: [])
+    }
+    
+    private func moveTilesToUp(board: Board) -> MovingResult {
+        return MovingResult(board: board, records: [])
+    }
+    
+    private func moveTilesToDown(board: Board) -> MovingResult {
+        return MovingResult(board: board, records: [])
+    }
 }
 
 extension BoardLogicImpl: BoardLogic {
-    func fillRandomTile() {
-        if let position = board.randomEmptyPosition {
-            let point = 2
-            board[position] = .filled(point: point)
-            didEventSend.onNext(.didTileGenerate(board: board, point: point))
+    func fillRandomTile(board: Board) -> Board {
+        guard let position = board.randomEmptyPosition else {
+            return board
         }
+        var board = board
+        let point = 2
+        board[position] = .filled(point: point)
+        return board
     }
     
-    func moveTiles(to direction: Direction) {
+    func moveTiles(to direction: Direction, board: Board) -> MovingResult {
         switch direction {
         case .down:
-            moveTilesToDown()
+            return moveTilesToDown(board: board)
 
         case .up:
-            moveTilesToUp()
+            return moveTilesToUp(board: board)
 
         case .left:
-            moveTilesToLeft()
+            return moveTilesToLeft(board: board)
             
         case .right:
-            moveTilesToRight()
+            return moveTilesToRight(board: board)
         }
-    }
-    
-    func reset() {
-        board.reset()
-        didEventSend.onNext(.didTilesReset(board: board))
     }
 }

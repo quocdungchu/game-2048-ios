@@ -1,6 +1,6 @@
 import Foundation
 
-class Board {
+struct Board {
     enum Constants {
         static let numberOfRangs = 4
         static let numberOfColonnes = 4
@@ -74,10 +74,6 @@ class Board {
         set(newValue) {
             tiles[position.index] = newValue
         }
-    }
-    
-    func reset() {
-        tiles = Board.defaultTiles
     }
 }
 
